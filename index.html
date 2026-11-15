@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Squishe Luxury — Super-soft things, happy days</title>
+<style>
+:root{--pink:#f7c9dc;--rose:#b95782;--cream:#fffaf6;--ink:#493b42;--mint:#dff1e8}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+header{position:sticky;top:0;background:#fffaf6ee;backdrop-filter:blur(12px);border-bottom:1px solid #f0dce5;z-index:5}
+.nav{max-width:1100px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:900;font-size:1.35rem;color:var(--rose);letter-spacing:.2px}.brand span{color:var(--ink)}
+nav{display:flex;gap:16px;align-items:center}nav a{color:var(--ink);text-decoration:none;font-weight:650}
+button,.button{border:0;border-radius:999px;background:var(--rose);color:white;padding:11px 17px;font-weight:750;cursor:pointer;text-decoration:none}
+button.secondary{background:#f4e4eb;color:var(--ink)}button:disabled{opacity:.45;cursor:not-allowed}
+main{max-width:1100px;margin:auto;padding:24px 20px 70px}
+.hero{background:linear-gradient(120deg,#ffe0ec,#fff2d9 60%,#e5f5ec);border-radius:28px;padding:48px 30px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;overflow:hidden}
+.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:.75rem;font-weight:850;color:var(--rose)}
+h1{font-size:clamp(2.2rem,6vw,4.2rem);line-height:1.02;margin:10px 0 16px;letter-spacing:-2px}
+.hero p{max-width:520px}.hero-art{font-size:clamp(5rem,13vw,9rem);text-align:center;filter:drop-shadow(0 15px 10px #b9578230);transform:rotate(-7deg)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:38px 0 18px}.section-head h2{margin:0;font-size:1.8rem}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.product{background:white;border:1px solid #f0e2e8;border-radius:20px;padding:14px;box-shadow:0 5px 18px #5a33400b}
+.product-art{height:145px;border-radius:16px;display:grid;place-items:center;font-size:5rem;background:linear-gradient(145deg,#fff0f5,#fff8e8);margin-bottom:12px}
+.product h3{margin:3px 0}.muted{color:#806f77;font-size:.9rem}.price{font-weight:850;color:var(--rose);margin:8px 0}
+.product button{width:100%}
+.panel{background:white;border:1px solid #f0e2e8;border-radius:22px;padding:22px;margin-top:24px}
+.columns{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+label{display:block;font-weight:700;margin:11px 0 5px}input,select,textarea{width:100%;padding:12px;border:1px solid #dfcbd4;border-radius:12px;background:#fffdfd;font:inherit;color:var(--ink)}
+.row{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #f2e7ec}
+.qty{display:flex;align-items:center;gap:8px}.qty button{padding:5px 11px}
+.notice{background:#fff4d9;border:1px solid #f1dfac;border-radius:14px;padding:13px;font-size:.92rem}
+.success{background:#e8f6ee;border:1px solid #c4e4d0;border-radius:14px;padding:14px}
+footer{text-align:center;padding:30px 20px;color:#806f77;border-top:1px solid #f0dce5}
+.hidden{display:none!important}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.hero-art{font-size:6rem}.columns{grid-template-columns:1fr}nav{gap:9px}nav a{font-size:.9rem}}
+@media(max-width:440px){.grid{grid-template-columns:1fr 1fr}.product-art{height:110px;font-size:3.8rem}.nav{flex-wrap:wrap}.hero{padding:32px 22px}}
+</style>
+</head>
+<body>
+<header><div class="nav"><div class="brand">Squishe <span>Luxury</span> ✨</div><nav><a href="#shop">Shop</a><a href="#delivery">Delivery</a><a href="#checkout">Checkout</a><button id="basketJump" class="secondary">Basket <span id="basketCount">0</span></button></nav></div></header>
+<main>
+<section class="hero">
+ <div><div class="eyebrow">A little squish of happiness</div><h1>Find your<br>happy squish.</h1><p>Meet your new desk buddy, pocket pal or cosy-time companion. Pick your favourites and build a basket.</p><a class="button" href="#shop">Shop squishies</a></div>
+ <div class="hero-art" aria-label="Cute squishy toys">🧈 🍓<br>🐰 ☁️</div>
+</section>
+<div class="section-head" id="shop"><div><div class="eyebrow">The collection</div><h2>Shop all squishies</h2></div><strong>£2.00 each</strong></div>
+<div class="grid" id="products"></div>
+<section class="panel" id="basket">
+ <div class="section-head" style="margin:0 0 10px"><h2>Your basket</h2><button class="secondary" id="clearBasket">Clear basket</button></div>
+ <div id="basketItems"><p class="muted">Your basket is empty. Add a squishy to get started!</p></div>
+ <div class="row"><strong>Total</strong><strong id="total">£0.00</strong></div>
+ <p class="muted">Delivery cost, if any, will be confirmed before a real order is paid.</p>
+</section>
+<section class="panel" id="checkout">
+ <div class="eyebrow">Almost yours</div><h2>Delivery details & checkout</h2>
+ <div class="notice"><strong>Demo checkout:</strong> This preview can collect a sample delivery form and show how checkout works, but it does not take payments, save orders to a shop account, or send parcels. Do not enter real personal or payment information here.</div>
+ <form id="orderForm">
+ <div class="columns">
+  <div><h3>Where should it go?</h3>
+   <label for="name">Full name</label><input id="name" autocomplete="name" required placeholder="Your name">
+   <label for="email">Email address</label><input id="email" type="email" autocomplete="email" required placeholder="you@example.com">
+   <label for="address">House number and street</label><input id="address" autocomplete="street-address" required>
+   <label for="town">Town / city</label><input id="town" autocomplete="address-level2" required>
+   <label for="postcode">Postcode</label><input id="postcode" autocomplete="postal-code" required>
+   <label for="country">Country</label><select id="country"><option>United Kingdom</option><option>Ireland</option><option>Other</option></select>
+  </div>
+  <div><h3>Payment method</h3>
+   <label for="payment">Choose a payment option</label><select id="payment"><option>Card payment (to be connected)</option><option>PayPal (to be connected)</option><option>Other secure provider (to be connected)</option></select>
+   <p class="muted">No card details are requested or stored in this demo. A real shop needs a payment provider account owned and managed by an adult/guardian if the shop owner is under 18.</p>
+   <h3 id="delivery">Delivery</h3><p>Orders need to be packed and sent using a courier or a suitable fulfilment service. Amazon delivery is not automatically included; the seller must arrange a supported shipping service.</p>
+   <button type="submit" id="placeOrder">Preview order</button>
+  </div>
+ </div>
+ </form>
+ <div id="confirmation" class="success hidden" role="status"></div>
+</section>
+<section class="panel"><h2>About Squishe Luxury</h2><p>Small, joyful squishies for gifting, collecting and taking a little break. Each listing is currently a sample product; confirm the exact toy, materials, age guidance and stock before selling.</p><p class="muted">Questions? Add your shop email address here before publishing.</p></section>
+</main>
+<footer>© <span id="year"></span> Squishe Luxury · A little squish of happiness</footer>
+<script>
+const products=[
+ ['Butter Squishy','🧈'],['Strawberry Squishy','🍓'],['Peach Squishy','🍑'],['Axolotl Squishy','🩷'],
+ ['Bunny Squishy','🐰'],['Cloud Squishy','☁️'],['Donut Squishy','🍩'],['Bread Squishy','🍞'],
+ ['Heart Squishy','💗'],['Cat Paw Squishy','🐾'],['Bear Squishy','🧸'],['Watermelon Squishy','🍉']
+];
+const cart={};
+const money=n=>'£'+n.toFixed(2);
+const productRoot=document.getElementById('products');
+products.forEach(([name,emoji],i)=>{
+ const card=document.createElement('article');card.className='product';
+ card.innerHTML=`<div class="product-art" aria-hidden="true">${emoji}</div><h3>${name}</h3><div class="muted">Soft-toy style sample listing</div><div class="price">£2.00</div><button type="button">Add to basket</button>`;
+ card.querySelector('button').addEventListener('click',()=>{cart[i]=(cart[i]||0)+1;renderCart()});
+ productRoot.appendChild(card);
+});
+function renderCart(){
+ const root=document.getElementById('basketItems');root.innerHTML='';
+ let count=0,total=0;
+ products.forEach(([name,emoji],i)=>{const q=cart[i]||0;if(!q)return;count+=q;total+=q*2;
+  const row=document.createElement('div');row.className='row';
+  row.innerHTML=`<div><strong>${emoji} ${name}</strong><div class="muted">£2.00 each</div></div><div class="qty"><button type="button" aria-label="Remove one ${name}">−</button><strong>${q}</strong><button type="button" aria-label="Add one ${name}">+</button></div>`;
+  const [minus,plus]=row.querySelectorAll('button');
+  minus.onclick=()=>{if(cart[i]>1)cart[i]--;else delete cart[i];renderCart()};
+  plus.onclick=()=>{cart[i]++;renderCart()};
+  root.appendChild(row);
+ });
+ if(!count)root.innerHTML='<p class="muted">Your basket is empty. Add a squishy to get started!</p>';
+ document.getElementById('basketCount').textContent=count;
+ document.getElementById('total').textContent=money(total);
+ document.getElementById('placeOrder').disabled=!count;
+}
+document.getElementById('clearBasket').onclick=()=>{Object.keys(cart).forEach(k=>delete cart[k]);renderCart()};
+document.getElementById('basketJump').onclick=()=>document.getElementById('basket').scrollIntoView({behavior:'smooth'});
+document.getElementById('orderForm').addEventListener('submit',e=>{
+ e.preventDefault();if(!Object.keys(cart).length)return;
+ const name=document.getElementById('name').value.trim();
+ const total=Object.values(cart).reduce((a,q)=>a+q*2,0);
+ document.getElementById('confirmation').classList.remove('hidden');
+ document.getElementById('confirmation').innerHTML=`<strong>Demo order preview for ${name}!</strong><br>Your sample basket total is ${money(total)}. No payment was taken and no order or delivery was created.`;
+});
+document.getElementById('year').textContent=new Date().getFullYear();
+renderCart();
+</script>
+</body></html>
