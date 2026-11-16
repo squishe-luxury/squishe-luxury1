@@ -3,292 +3,354 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Squishe Luxury</title>
+
 <style>
-:root {
- --navy:#102b4e;
- --blue:#dceeff;
- --light:#f3f8ff;
- --silver:#aebed0;
- --ink:#18324d;
+* {
+  box-sizing: border-box;
 }
-*{box-sizing:border-box}
-body{
- margin:0;
- background:var(--light);
- color:var(--ink);
- font-family:Arial,sans-serif;
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f8ff;
+  color: #102b4e;
 }
-header{
- background:var(--navy);
- color:white;
- padding:22px 15px;
- text-align:center;
+
+header {
+  background: #102b4e;
+  color: white;
+  text-align: center;
+  padding: 28px 15px;
 }
-header h1{margin:0;font-size:30px;letter-spacing:1px}
-header p{margin:7px 0 0;color:#dceeff}
-nav{
- background:#193d65;
- padding:12px;
- text-align:center;
+
+header h1 {
+  margin: 0;
+  font-size: 34px;
+  letter-spacing: 2px;
 }
-nav a{color:white;text-decoration:none;margin:0 12px;font-weight:bold}
-main{max-width:1100px;margin:auto;padding:22px}
-.hero{
- background:linear-gradient(120deg,#c8e4ff,#edf6ff);
- padding:45px 20px;
- border-radius:22px;
- text-align:center;
- border:1px solid #b9d6f2;
+
+header p {
+  margin-bottom: 0;
+  color: #dceeff;
 }
-.hero h2{font-size:34px;color:var(--navy);margin:0 0 10px}
-.hero p{font-size:17px}
-.section-title{
- color:var(--navy);
- margin-top:35px;
+
+nav {
+  background: #dceeff;
+  padding: 13px;
+  text-align: center;
 }
-.grid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:17px;
+
+nav a {
+  color: #102b4e;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 12px;
 }
-.product{
- background:white;
- border:1px solid var(--silver);
- border-radius:18px;
- padding:13px;
- text-align:center;
- box-shadow:0 5px 16px #102b4e12;
+
+.hero {
+  text-align: center;
+  padding: 35px 15px;
+  background: white;
 }
-.product img,.emoji{
- width:100%;
- height:155px;
- object-fit:contain;
- border-radius:13px;
- background:#eaf4ff;
+
+.hero h2 {
+  font-size: 27px;
 }
-.emoji{
- display:grid;
- place-items:center;
- font-size:65px;
+
+.hero p {
+  color: #526b88;
 }
-.product h3{color:var(--navy);margin:12px 0 5px}
-.price{font-weight:bold;color:#27649b;font-size:18px}
-button{
- background:var(--navy);
- color:white;
- border:0;
- border-radius:22px;
- padding:11px 17px;
- cursor:pointer;
- font-weight:bold;
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 16px;
+  padding: 20px;
+  max-width: 1100px;
+  margin: auto;
 }
-button:hover{background:#285783}
-#basket{
- background:white;
- border:1px solid var(--silver);
- border-radius:20px;
- padding:20px;
- margin-top:30px;
+
+.product {
+  background: white;
+  border: 2px solid #dceeff;
+  border-radius: 15px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(16,43,78,0.08);
 }
-.basket-line{
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:10px;
- border-bottom:1px solid #e4edf7;
- padding:12px 0;
+
+.product img {
+  width: 100%;
+  height: 155px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #dceeff;
 }
-.qty{display:flex;align-items:center;gap:9px}
-.qty button{padding:6px 12px}
-.total{
- font-size:22px;
- font-weight:bold;
- color:var(--navy);
+
+.product h3 {
+  margin: 10px 0 5px;
 }
-.info{
- background:#e5f2ff;
- padding:18px;
- border-radius:15px;
- margin-top:25px;
+
+.price {
+  font-weight: bold;
+  color: #102b4e;
 }
-footer{
- background:var(--navy);
- color:white;
- text-align:center;
- padding:25px;
- margin-top:35px;
+
+button {
+  background: #102b4e;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 11px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 5px;
 }
-@media(max-width:700px){
- .grid{grid-template-columns:repeat(2,1fr)}
- .hero h2{font-size:27px}
+
+button:hover {
+  background: #315d91;
 }
-@media(max-width:400px){
- .grid{grid-template-columns:1fr 1fr;gap:9px}
- .product{padding:8px}
- .product img,.emoji{height:110px}
+
+.basket {
+  background: white;
+  border: 2px solid #dceeff;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 650px;
+  width: calc(100% - 30px);
+}
+
+.basket h2 {
+  margin-top: 0;
+}
+
+.total-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.grand-total {
+  border-top: 1px solid #aebed0;
+  margin-top: 10px;
+  padding-top: 12px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+footer {
+  background: #102b4e;
+  color: white;
+  text-align: center;
+  padding: 22px;
+  margin-top: 30px;
+}
+
+/* Confetti celebration */
+.confetti {
+  position: fixed;
+  top: -15px;
+  width: 10px;
+  height: 14px;
+  pointer-events: none;
+  z-index: 9999;
+  animation: fall 1.8s ease-out forwards;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(105vh) rotate(720deg);
+    opacity: 0;
+  }
 }
 </style>
 </head>
+
 <body>
 
 <header>
-<h1>✦ SQUISHE LUXURY ✦</h1>
-<p>Premium squishies. Endless happiness.</p>
+  <h1>SQUISHE LUXURY</h1>
+  <p>Little squishes, big happiness!</p>
 </header>
 
 <nav>
-<a href="#shop">Shop</a>
-<a href="#basket">Basket</a>
-<a href="#delivery">Delivery</a>
+  <a href="#home">Home</a>
+  <a href="#products">Shop</a>
+  <a href="#basket">Basket</a>
 </nav>
 
-<main>
-<section class="hero">
-<h2>Find Your Perfect Squish</h2>
-<p>Discover your new favourite squishy.</p>
-<strong>Every squishy just £2.00</strong>
+<section class="hero" id="home">
+  <h2>Welcome to Squishe Luxury 💙</h2>
+  <p>Discover your new favourite squishy!</p>
+  <p>Fun for everyone, with a little luxury in every squeeze.</p>
 </section>
 
-<h2 class="section-title" id="shop">Our Collection 💙</h2>
-<div class="grid" id="products"></div>
+<h2 style="text-align:center; margin-top:30px;" id="products">
+  Our Squishies
+</h2>
 
-<section id="basket">
-<h2>🛍️ Your Basket</h2>
-<div id="basketItems">Your basket is empty.</div>
-<p class="total" id="total">Total: £0.00</p>
-<button onclick="clearBasket()">Clear basket</button>
-</section>
+<div class="products" id="product-list"></div>
 
-<section class="info" id="delivery">
-<h2>Delivery Information</h2>
-<p>Delivery charges will be confirmed before any real order is placed.</p>
-<p>Every product listing is a sample until stock, supplier, safety information and delivery arrangements are confirmed.</p>
-</section>
+<section class="basket" id="basket">
+  <h2>🛒 Your Basket</h2>
+  <div id="basket-items">Your basket is empty.</div>
 
-<section class="info">
-<h2>Checkout</h2>
-<p><strong>Demo checkout only.</strong> This website does not take payments, store orders or arrange deliveries. Do not enter real personal or payment details.</p>
+  <div class="total-line">
+    <span>Items subtotal:</span>
+    <span id="subtotal">£0.00</span>
+  </div>
+
+  <div class="total-line">
+    <span>Shipping:</span>
+    <span id="shipping">£0.20</span>
+  </div>
+
+  <div class="total-line grand-total">
+    <span>Total:</span>
+    <span id="total">£0.00</span>
+  </div>
+
+  <button onclick="clearBasket()">Empty basket</button>
+  <button onclick="checkout()">Continue to checkout</button>
+  <p style="font-size:12px;color:#526b88;">
+    Checkout is a demonstration only. No real payments or orders are taken.
+  </p>
 </section>
-</main>
 
 <footer>
-<p>✦ Squishe Luxury ✦</p>
-<p>Premium squishies for everyone.</p>
+  <p>💙 Squishe Luxury 💙</p>
+  <p>Thank you for visiting!</p>
 </footer>
 
 <script>
-const products=[
-["Butter Squishy","🧈","IMG_2778.jpeg"],
-["Strawberry Squishy","🍓","IMG_2779.jpeg"],
-["Peach Squishy","🍑","IMG_2780.jpeg"],
-["Axolotl Squishy","🩷","IMG_2781.jpeg"],
-["Bunny Squishy","🐰","IMG_2782.jpeg"],
-["Cloud Squishy","☁️","IMG_2783.jpeg"],
-["Donut Squishy","🍩","IMG_2784.jpeg"],
-["Bread Squishy","🍞","IMG_2785.jpeg"],
-["Heart Squishy","💗","IMG_2786.jpeg"],
-["Cat Paw Squishy","🐾","IMG_2787.jpeg"],
-["Bear Squishy","🧸","IMG_2788.jpeg"],
-["Watermelon Squishy","🍉","IMG_2789.jpeg"]
+const products = [
+  { name: "Peach", image: "IMG_2780.jpeg" },
+  { name: "Butter", image: "IMG_2778.jpeg" },
+  { name: "Strawberry", image: "IMG_2779.jpeg" },
+  { name: "Axolotl", image: "IMG_2781.jpeg" },
+  { name: "Bunny", image: "IMG_2782.jpeg" },
+  { name: "Cloud", image: "IMG_2783.jpeg" },
+  { name: "Donut", image: "IMG_2784.jpeg" },
+  { name: "Bread", image: "IMG_2785.jpeg" },
+  { name: "Heart", image: "IMG_2786.jpeg" },
+  { name: "Paw", image: "IMG_2787.jpeg" },
+  { name: "Bear", image: "IMG_2788.jpeg" },
+  { name: "Watermelon", image: "IMG_2789.jpeg" }
 ];
 
-let basket={};
+const price = 5.00;
+const shippingFee = 0.20;
+let basket = [];
 
-function showProducts(){
- const root=document.getElementById("products");
+const imageBase =
+  "https://squishe-luxury.github.io/squishe-luxury1/";
 
- products.forEach((p,i)=>{
-  const card=document.createElement("article");
-  card.className="product";
+function showProducts() {
+  const list = document.getElementById("product-list");
 
-  const img=document.createElement("img");
-  img.src="https://squishe-luxury.github.io/squishe-luxury1/"+p[2];
-  img.alt=p[0];
-
-  img.onerror=()=>{
-   const emoji=document.createElement("div");
-   emoji.className="emoji";
-   emoji.textContent=p[1];
-   img.replaceWith(emoji);
-  };
-
-  const title=document.createElement("h3");
-  title.textContent=p[0];
-
-  const price=document.createElement("p");
-  price.className="price";
-  price.textContent="£2.00";
-
-  const button=document.createElement("button");
-  button.textContent="Add to basket";
-  button.onclick=()=>{
-   basket[i]=(basket[i]||0)+1;
-   showBasket();
-  };
-
-  card.append(img,title,price,button);
-  root.appendChild(card);
- });
+  list.innerHTML = products.map((product, index) => `
+    <article class="product">
+      <img
+        src="${imageBase + product.image}"
+        alt="${product.name} squishy"
+        onerror="this.alt='Photo unavailable'; this.style.background='#dceeff';"
+      >
+      <h3>${product.name}</h3>
+      <p class="price">£5.00</p>
+      <button onclick="addToBasket(${index})">
+        Add to Basket
+      </button>
+    </article>
+  `).join("");
 }
 
-function showBasket(){
- const root=document.getElementById("basketItems");
- root.innerHTML="";
- let total=0;
-
- Object.keys(basket).forEach(k=>{
-  const i=Number(k);
-  const q=basket[k];
-  total+=q*2;
-
-  const line=document.createElement("div");
-  line.className="basket-line";
-
-  const name=document.createElement("strong");
-  name.textContent=products[i][0]+" × "+q;
-
-  const controls=document.createElement("div");
-  controls.className="qty";
-
-  const minus=document.createElement("button");
-  minus.textContent="−";
-  minus.onclick=()=>{
-   if(basket[i]>1)basket[i]--;
-   else delete basket[i];
-   showBasket();
-  };
-
-  const plus=document.createElement("button");
-  plus.textContent="+";
-  plus.onclick=()=>{
-   basket[i]++;
-   showBasket();
-  };
-
-  controls.append(minus,plus);
-  line.append(name,controls);
-  root.appendChild(line);
- });
-
- if(total===0)root.textContent="Your basket is empty.";
-
- document.getElementById("total").textContent=
- "Total: £"+total.toFixed(2);
+function addToBasket(index) {
+  basket.push(products[index]);
+  updateBasket();
+  celebrate();
 }
 
-function clearBasket(){
- basket={};
- showBasket();
+function updateBasket() {
+  const items = document.getElementById("basket-items");
+
+  if (basket.length === 0) {
+    items.innerHTML = "Your basket is empty.";
+  } else {
+    items.innerHTML = basket.map((item, index) => `
+      <div class="total-line">
+        <span>${item.name} - £5.00</span>
+        <button onclick="removeItem(${index})">Remove</button>
+      </div>
+    `).join("");
+  }
+
+  const subtotal = basket.length * price;
+  const total = subtotal + (basket.length > 0 ? shippingFee : 0);
+
+  document.getElementById("subtotal").textContent =
+    "£" + subtotal.toFixed(2);
+
+  document.getElementById("shipping").textContent =
+    "£" + (basket.length > 0 ? shippingFee : 0).toFixed(2);
+
+  document.getElementById("total").textContent =
+    "£" + total.toFixed(2);
+}
+
+function removeItem(index) {
+  basket.splice(index, 1);
+  updateBasket();
+}
+
+function clearBasket() {
+  basket = [];
+  updateBasket();
+}
+
+function celebrate() {
+  const colours = ["#2589ff", "#35c979", "#ff70b7"];
+
+  for (let i = 0; i < 65; i++) {
+    const piece = document.createElement("div");
+    piece.className = "confetti";
+
+    piece.style.left = Math.random() * 100 + "vw";
+    piece.style.backgroundColor =
+      colours[Math.floor(Math.random() * colours.length)];
+
+    piece.style.animationDelay = Math.random() * 0.5 + "s";
+    piece.style.transform =
+      "rotate(" + Math.random() * 360 + "deg)";
+
+    document.body.appendChild(piece);
+
+    setTimeout(() => piece.remove(), 2500);
+  }
+}
+
+function checkout() {
+  if (basket.length === 0) {
+    alert("Please add a squishy to your basket first!");
+    return;
+  }
+
+  alert(
+    "Your basket is ready! This is a demo website, " +
+    "so real checkout and payment are not set up yet."
+  );
 }
 
 showProducts();
-showBasket();
+updateBasket();
 </script>
 
 </body>
 </html>
-
-
 
